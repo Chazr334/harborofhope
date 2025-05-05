@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor of Hope - Stand Defiant. Offer Safe Harbor.</title>
+    
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --accent-color: #8B0000;
+            --card-bg: #2a2a2a;
+            --border-color: #404040;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --success-color: #2d7d46;
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Container for max-width */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Section spacing */
+        section {
+            padding: 4rem 0;
+        }
+        
+        /* Headings */
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 600;
+        }
+        
+        p {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin-bottom: 1rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .btn:hover {
+            opacity: 0.8;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-large {
+            font-size: 1.25rem;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--bg-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .eagle-icon {
+            width: 32px;
+            height: 32px;
+            transform: rotate(180deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                repeating-linear-gradient(45deg, 
+                    transparent, 
+                    transparent 1rem,
+                    rgba(255, 255, 255, 0.03) 1rem,
+                    rgba(255, 255, 255, 0.03) 2rem
+                );
+        }
+        
+        .hero .tagline {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .hero .subline {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        /* About Section */
+        .about {
+            text-align: center;
+        }
+        
+        /* How It Works Section */
+        .how-it-works .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            fill: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Get Involved Section */
+        .get-involved .columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .column {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+        
+        /* Connect Section */
+        .connect {
+            text-align: center;
+        }
+        
+        .connect-card {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 3rem auto 0;
+        }
+        
+        .signal-logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .steps {
+            text-align: left;
+            max-width: 450px;
+            margin: 2rem auto;
+        }
+        
+        .steps li {
+            margin-bottom: 1rem;
+        }
+        
+        .note {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+        
+        /* QR code display */
+        .qr-container {
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            width: fit-content;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+        }
+        
+        .methods-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 450px;
+        }
+        
+        .method-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .copy-area {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        
+        .copy-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-question {
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding-bottom: 1rem;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .disclaimer {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        /* Accessibility focus styles */
+        :focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <!-- Upside-down eagle icon -->
+                <svg class="eagle-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="rotate(180 512 512)">
+                        <!-- Main eagle body -->
+                        <path d="M512 200 C420 200 330 280 330 400 L330 550 C330 630 380 690 420 720 C440 730 450 745 450 760 C450 800 425 830 420 840 C418 845 420 850 425 852 C430 854 435 852 437 847 C445 825 470 790 470 760 C470 740 460 725 440 715 C400 690 350 630 350 550 L350 400 C350 290 430 220 512 220 C594 220 674 290 674 400 L674 550 C674 630 624 690 584 715 C564 725 554 740 554 760 C554 790 579 825 587 847 C589 852 594 854 599 852 C604 850 606 845 604 840 C599 830 574 800 574 760 C574 745 584 730 604 720 C644 690 694 630 694 550 L694 400 C694 280 604 200 512 200 Z" fill="#8B0000"/>
+                        
+                        <!-- Eagle wings -->
+                        <path d="M150 300 C100 250 50 300 50 350 C50 400 120 480 200 500 C250 510 300 450 300 400 L300 350 C300 300 250 280 200 300 C150 320 140 340 150 300 Z" fill="#8B0000"/>
+                        <path d="M874 300 C924 250 974 300 974 350 C974 400 904 480 824 500 C774 510 724 450 724 400 L724 350 C724 300 774 280 824 300 C874 320 884 340 874 300 Z" fill="#8B0000"/>
+                        
+                        <!-- Eagle talons -->
+                        <path d="M420 840 C420 850 400 870 380 870 C370 870 360 860 360 850 C360 840 370 830 380 830 C390 830 400 840 420 840 Z" fill="#8B0000"/>
+                        <path d="M604 840 C604 850 624 870 644 870 C654 870 664 860 664 850 C664 840 654 830 644 830 C634 830 624 840 604 840 Z" fill="#8B0000"/>
+                        
+                        <!-- Eagle head and beak -->
+                        <path d="M512 150 C540 150 560 170 560 200 C560 230 540 250 512 250 C484 250 464 230 464 200 C464 170 484 150 512 150 Z" fill="#8B0000"/>
+                        <path d="M464 200 C464 190 474 180 484 180 C494 180 504 190 504 200 C504 210 494 220 484 220 C474 220 464 210 464 200 Z" fill="black"/>
+                        
+                        <!-- Laurel branches -->
+                        <path d="M200 900 L250 950 L300 900 L350 950 L400 900" fill="none" stroke="#8B0000" stroke-width="20"/>
+                        <path d="M824 900 L774 950 L724 900 L674 950 L624 900" fill="none" stroke="#8B0000" stroke-width="20"/>
+                    </g>
+                </svg>
+                Harbor of Hope
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="tagline">Stand Defiant. Offer Safe Harbor.</h1>
+            <p class="subline">A decentralized network committed to protecting civil liberties.</p>
+            <a href="#connect" class="btn">Connect With Us</a>
+        </div>
+    </section>
+
+    <!-- About / Mission Section -->
+    <section class="about">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>Harbor of Hope is a volunteer-led network built for uncertain times. Inspired by the quiet strength of the Underground Railroad, we work to connect people with resources—shelter, support, information, and more—without putting them in the spotlight. Some of us stand in the open. Some of us move in the dark. All of us are here to make sure no one slips through the cracks. We don't make promises we can't keep. But we show up, and we help however we can.</p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="cards">
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                        <line x1="50" y1="20" x2="50" y2="40" stroke="currentColor" stroke-width="4"/>
+                        <line x1="80" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="4"/>
+                        <line x1="50" y1="80" x2="50" y2="60" stroke="currentColor" stroke-width="4"/>
+                        <line x1="20" y1="50" x2="40" y2="50" stroke="currentColor" stroke-width="4"/>
+                    </svg>
+                    <h3>Connect Securely</h3>
+                    <p>Use Signal's end-to-end encrypted messaging to maintain privacy.</p>
+                </div>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="30" width="60" height="50" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <path d="M20 30 L50 10 L80 30" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <rect x="40" y="50" width="20" height="30" fill="currentColor"/>
+                    </svg>
+                    <h3>Support & Resources</h3>
+                    <p>Safe housing, legal referrals, transport logistics, and more.</p>
+                </div>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <circle cx="70" cy="70" r="15" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <line x1="40" y1="35" x2="60" y2="65" stroke="currentColor" stroke-width="5"/>
+                        <path d="M35 35 C40 40 45 40 50 35" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M65 65 C70 70 75 70 80 65" fill="none" stroke="currentColor" stroke-width="3"/>
+                    </svg>
+                    <h3>Mutual Aid</h3>
+                    <p>Everyone contributes what they can: beds, rides, funds, skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="get-involved">
+        <div class="container">
+            <h2>Get Involved</h2>
+            <div class="columns">
+                <div class="column">
+                    <h3>Become a Harbor</h3>
+                    <ul>
+                        <li>Provide safe lodging or support resources</li>
+                        <li>Connect through encrypted channels</li>
+                        <li>Maintain operational security</li>
+                        <li>Attend encrypted training sessions</li>
+                    </ul>
+                    <a href="#connect" class="btn">Volunteer</a>
+                </div>
+                <div class="column">
+                    <h3>Request Help</h3>
+                    <ul>
+                        <li>No legal IDs required</li>
+                        <li>Communicate through encrypted channels</li>
+                        <li>Discrete handling of all requests</li>
+                        <li>Support tailored to your situation</li>
+                    </ul>
+                    <a href="#connect" class="btn btn-secondary">Need Assistance?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="connect" class="connect">
+        <div class="container">
+            <h2>Connect with Harbor of Hope</h2>
+            <p>We use Signal for all communications because of its strong security and privacy features.</p>
+            
+            <div class="connect-card">
+                <!-- Signal Logo -->
+                <svg class="signal-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#3A76F0"/>
+                    <path d="M30 70 L50 45 L70 70" fill="white"/>
+                    <path d="M30 30 L50 55 L70 30" fill="white"/>
+                </svg>
+                
+                <h3>Join Our Screening Group</h3>
+                
+                <div class="steps">
+                    <ol>
+                        <li>Download <a href="https://signal.org/download/" target="_blank" style="color: #3A76F0;">Signal</a> if you don't already have it</li>
+                        <li>Use one of the methods below to join our screening group</li>
+                        <li>Introduce yourself (using an alias if preferred) and mention your interest</li>
+                        <li>After screening, approved members will be added to our main network group</li>
+                    </ol>
+                </div>
+                
+                <div class="methods-container">
+                    <!-- Method 1: QR Code -->
+                    <div class="method-card">
+                        <h4>Method 1: Scan QR Code</h4>
+                        <p>Open Signal, tap the + icon, then select "Scan QR code" and scan this:</p>
+                        <div class="qr-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://signal.group/%23CjQKIO1TGter7ftLBNJqI9ludpXt7KCWftKCJHY0xEJGE5F2EhBuhn-gRAQ8YdrtfHKx925P" alt="Signal Group QR Code" class="qr-code">
+                        </div>
+                    </div>
+                    
+                    <!-- Method 2: Manual Group Link -->
+                    <div class="method-card">
+                        <h4>Method 2: Copy Group Link</h4>
+                        <p>Copy this link, open Signal, tap the + icon, then "New group" and paste this link:</p>
+                        <div class="copy-area" id="signal-link">https://signal.group/#CjQKIO1TGter7ftLBNJqI9ludpXt7KCWftKCJHY0xEJGE5F2EhBuhn-gRAQ8YdrtfHKx925P</div>
+                        <button class="copy-btn" onclick="copyToClipboard('signal-link')">Copy to Clipboard</button>
+                    </div>
+                    
+                    <!-- Method 3: Email Contact -->
+                    <div class="method-card">
+                        <h4>Method 3: Email Request</h4>
+                        <p>If the methods above don't work, email us with "Signal Group Request" in the subject line:</p>
+                        <div class="copy-area" id="email-address">harborofhope@protonmail.com</div>
+                        <button class="copy-btn" onclick="copyToClipboard('email-address')">Copy Email Address</button>
+                    </div>
+                </div>
+                
+                <p class="note">Your privacy and security are our priority. All communications are end-to-end encrypted.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Why do you use Signal?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Signal provides true end-to-end encryption, meaning only the participants in a conversation can read the messages. Signal also has features like disappearing messages, screen security, and minimal metadata collection. It's widely regarded as the most secure mainstream messaging platform.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What if I can't join the Signal group?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Some networks or browsers might block Signal links. If you're experiencing difficulties, try using a different network, device, or browser. As a last resort, email us and we'll provide alternate instructions.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How are donations used?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Funds go directly to emergency housing, transportation, legal fee assistance, and encrypted communication tools. All spending is transparent to verified network members.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Safety guidelines
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Always use encrypted channels, verify member identity through multiple steps, never share locations publicly, and keep detailed records off network devices.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I use an alias?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we encourage the use of aliases for added privacy. You never need to share your legal name with us.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What happens after I contact you?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our screening group administrators will have a brief conversation with you to understand your needs or how you'd like to contribute. This helps us ensure network security and find the best way to include you. After screening, approved members will be added to our main Signal group.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://signal.org/download/" target="_blank">Download Signal</a>
+                    <a href="https://signal.org/blog/sealed-sender/" target="_blank">Signal Privacy</a>
+                    <a href="https://ssd.eff.org/" target="_blank">Security Guides</a>
+                </div>
+                <p class="disclaimer">Harbor of Hope is a non-profit mutual-aid network. We do not provide legal advice. If you are in immediate danger, contact local counsel.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copy to clipboard function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            // Create a temporary input element
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            
+            // Select and copy the text
+            tempInput.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(tempInput);
+            
+            // Change button text temporarily to show success
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = "Copied!";
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+        
+        // FAQ toggle functionality
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                if (faq !== answer) {
+                    faq.classList.remove('active');
+                    faq.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            element.classList.toggle('active');
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
